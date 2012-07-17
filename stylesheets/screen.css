@@ -1,0 +1,76 @@
+/*!
+ * Bremen.js - Chapter #3
+ *
+ * CaloryCounter'
+ *
+ * Copyright(c) 2012 Bremen, Germany - All rights reserved.
+ *
+ * Authors:
+ *
+ *     Lukas Magedanz <lukas.magedanz@gmail.com>
+ *     André König <andre.koenig@gmail.com>
+ *
+ */
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700);
+
+body {
+	background:#e5e5e5;
+	color:#7d7d7d;
+	font-family:'Droid Sans';
+
+	/* shadow dfdfdf */
+}
+
+form {
+	margin-top:20px;
+}
+
+input {
+	border:1px solid #e5e5e5;
+	margin:5px 0;
+	padding:10px 0 10px 5px;
+	width:100%;
+}
+
+.view {
+	background:#fff;
+	box-shadow: 0px 0px 3px 3px #dfdfdf;
+	margin:0 auto;
+	padding:4% 5% 2%;
+	position:relative;
+	width:30%;
+}
+
+.add {
+	color:#7d7d7d;
+	display:block;
+	text-align:right;
+	text-decoration:none;
+}
+
+.calories {
+	list-style:none;
+	margin:50px 0 40px;
+	padding:0;
+}
+
+.calories li {
+	padding:10px 0;
+	position:relative;
+}
+
+.calories li span {
+    position:absolute;
+    right:0;
+}
+
+.summary {
+	border-top:1px solid #e5e5e5;
+	padding-top:20px;
+	text-align:right;
+}
+
+.summary span {
+	font-weight:bold;
+}
