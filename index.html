@@ -10,7 +10,7 @@
         <div id="day" class="view">
             <a class="add" href="#" ng-click="showForm = !showForm">+ Neuer Eintrag</a>
 
-            <form ng-show="showForm" ng-submit="submit()">
+            <form jp-show="showForm" ng-submit="submit()" style="display:none">
                 <input type="text" name="product" ng-model="calory.product" placeholder="Was hast Du gegessen?" required>
                 <input type="number" name="count" ng-model="calory.count" placeholder="Anzahl kcal?" required>
 
@@ -18,12 +18,15 @@
             </form>
 
             <ul class="calories">
-                <li ng-repeat="calory in calories"><a href="#" class="remove" ng-click="remove(calory)">&times;</a> {{calory.product}} <span>{{calory.count}} kcal </span></li>
+                <li ng-repeat="calory in calories | orderBy:'product'">
+                    <a href="#" class="remove" ng-click="remove(calory)">&times;</a> {{calory.product}} <span>{{calory.count}} kcal </span>
+                </li>
                 <p ng-hide="calories.length > 0">Wow, du hast noch nichts gegessen.</p>
             </ul>
             <p class="summary">Gesamt: <span>{{ amount }}</span> kcal</p>
         </div>
 
+        <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
         <script src="javascripts/vendor/angular-1.0.1.js"></script>
         <script src="javascripts/vendor/angular-resource-1.0.1.js"></script>
         <script src="javascripts/app/app.js"></script>

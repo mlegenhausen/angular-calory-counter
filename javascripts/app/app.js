@@ -10,6 +10,16 @@ app.factory('Calory', function($resource) {
 	return Calory;
 });
 
+app.directive('jpShow', function() {
+	return {
+		link: function(scope, element, attr) {
+			scope.$watch(attr.jpShow, function(value) {
+				value ? $(element).slideDown() : $(element).slideUp();
+			});
+		}
+	};
+});
+
 function CaloryCounterCtrl($scope, Calory) {
 	$scope.calories = Calory.query();
 
