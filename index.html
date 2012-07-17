@@ -18,7 +18,7 @@
             </form>
 
             <ul class="calories">
-                <li ng-repeat="calory in calories">{{calory.product}} <span>{{calory.count}} kcal</span></li>
+                <li ng-repeat="calory in calories"><a href="#" class="remove" ng-click="remove(calory)">&times;</a> {{calory.product}} <span>{{calory.count}} kcal </span></li>
                 <p ng-hide="calories.length > 0">Wow, du hast noch nichts gegessen.</p>
             </ul>
             <p class="summary">Gesamt: <span>{{ amount }}</span> kcal</p>

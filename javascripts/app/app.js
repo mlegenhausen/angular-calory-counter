@@ -1,15 +1,21 @@
 var app = angular.module('calory-counter', ['ngResource']);
 
 app.factory('Calory', function($resource) {
-	return $resource('http://localhost\\:3000/calories');
+	var Calory = $resource('http://localhost\\:3000/calories/:id');
+
+	Calory.prototype.destroy = function(callback) {
+		return Calory.remove({id: this.id}, callback);
+	};
+
+	return Calory;
 });
 
 function CaloryCounterCtrl($scope, Calory) {
-	var calories = $scope.calories = Calory.query();
+	$scope.calories = Calory.query();
 
 	$scope.$watch('calories', function() {
 		$scope.amount = 0;
-		angular.forEach(calories, function(calory) {
+		angular.forEach($scope.calories, function(calory) {
 			$scope.amount += calory.count;
 		});
 	}, true);
@@ -18,6 +24,13 @@ function CaloryCounterCtrl($scope, Calory) {
 		Calory.save($scope.calory, function() {
 			$scope.calories = Calory.query();
 			$scope.showForm = false;
+			$scope.calory = {};
+		});
+	};
+
+	$scope.remove = function(calory) {
+		calory.destroy(function() {
+			$scope.calories.splice($scope.calories.indexOf(calory), 1);
 		});
 	};
 }
