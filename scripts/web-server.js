@@ -1,7 +1,5 @@
 #!/usr/bin/env node
 
-/* Simple Node Development Web Server */
-
 var sys = require('sys'),
     http = require('http'),
     fs = require('fs'),

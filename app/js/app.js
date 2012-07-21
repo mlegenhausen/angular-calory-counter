@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('calory-counter', ['ngResource']);
 
 app.factory('Calory', function($resource) {
@@ -22,6 +24,8 @@ app.directive('jpShow', function() {
 
 function CaloryCounterCtrl($scope, Calory) {
 	$scope.calories = Calory.query();
+	$scope.amount = 0;
+	$scope.calory = {};
 
 	$scope.$watch('calories', function() {
 		$scope.amount = 0;
@@ -31,9 +35,9 @@ function CaloryCounterCtrl($scope, Calory) {
 	}, true);
 
 	$scope.submit = function() {
-		Calory.save($scope.calory, function() {
-			$scope.calories = Calory.query();
-			$scope.showForm = false;
+		$scope.showForm = false;
+		Calory.save($scope.calory, function(calory) {
+			$scope.calories.push(calory);
 			$scope.calory = {};
 		});
 	};
