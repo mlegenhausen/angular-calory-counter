@@ -3,7 +3,7 @@
 var app = angular.module('calory-counter', ['ngResource']);
 
 app.factory('Calory', function($resource) {
-	var Calory = $resource('http://huefte.jit.su/calories/:id');
+	var Calory = $resource('/calories/:id');
 
 	Calory.prototype.destroy = function(callback) {
 		return Calory.remove({id: this.id}, callback);

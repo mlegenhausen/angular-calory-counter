@@ -29,7 +29,7 @@ describe('CaloryCounter App', function() {
      
         beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
             $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('http://huefte.jit.su/calories').respond(angular.copy(testData));
+            $httpBackend.expectGET('/calories').respond(angular.copy(testData));
             scope = $rootScope.$new();
             ctrl = $controller(CaloryCounterCtrl, {$scope: scope});
         }));
@@ -46,7 +46,7 @@ describe('CaloryCounter App', function() {
             $httpBackend.flush();
             scope.showForm = true;
 
-            $httpBackend.expectPOST('http://huefte.jit.su/calories', {
+            $httpBackend.expectPOST('/calories', {
                 product: 'Water',
                 count: 10
             }).respond({
@@ -66,7 +66,7 @@ describe('CaloryCounter App', function() {
 
         it('should remove calory and update amount', function() {
             $httpBackend.flush();
-            $httpBackend.expectDELETE('http://huefte.jit.su/calories/1').respond({});
+            $httpBackend.expectDELETE('/calories/1').respond({});
             scope.remove(scope.calories[0]);
 
             $httpBackend.flush();
